@@ -15,6 +15,16 @@ value = ""
   return value
 end
 
+def bypass_hash(card_1, card_2, hand_total)
+  if hand_total < 8 && card_1 != card_2
+    puts "Your optimal move is to hit."
+  elsif hand_total > 16 && card_1 != card_2
+    puts "Your optimal move is to stand."
+  else
+    return
+  end
+end
+
 print "Please enter your first card: "
 card_1 = card_value.to_i
 print "Please enter your second card: "
@@ -24,4 +34,6 @@ dealer_card = card_value.to_i
 
 hand_total = card_1 + card_2
 
-puts "Your total is #{hand_total} and the dealer has #{dealer_card}."
+bypass_hash(card_1, card_2, hand_total)
+puts hand_total
+puts card_1, card_2
