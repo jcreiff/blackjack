@@ -15,23 +15,26 @@ value = ""
   return value
 end
 
-def bypass_hash(card_1, card_2, hand_total)
-  if hand_total < 8 && card_1 != card_2
+def bypass_hash(first_card, second_card, hand_total)
+  if hand_total < 8 && first_card != second_card
     puts "Your optimal move is to hit."
-  elsif hand_total > 16 && card_1 != card_2
+  elsif hand_total > 16 && first_card != second_card
     puts "Your optimal move is to stand."
   else
     return
   end
 end
 
-
 def check_soft(hand_total, dealer_card, soft)
-    return soft[hand_total][dealer_card]
+  return soft[hand_total][dealer_card]
 end
 
 def check_pair(hand_total, dealer_card, pair)
-    return pair[hand_total][dealer_card]
+  return pair[hand_total][dealer_card]
+end
+
+def check_hard(hand_total, dealer_card, hard)
+  return hard[hand_total][dealer_card]
 end
 
 soft = {13 => {2 => "hit", 3 => "hit", 4 => "double or hit",
@@ -74,18 +77,40 @@ pair = {4 => {2 => "split", 3 => "split", 4 => "split", 5 => "split",
         18 => {2 => "split", 3 => "split", 4 => "split", 5 => "split",
           6 => "split", 7 => "stand", 8 => "split", 9 => "split", 10 => "stand", 11 => "stand"}}
 
+hard = {8 => {2 => "hit", 3 => "hit", 4 => "hit", 5 => "double or hit",
+          6 => "double or hit", 7 => "hit", 8 => "hit", 9 => "hit", 10 => "hit", 11 => "hit"},
+        9 => {2 => "double or hit", 3 => "double or hit", 4 => "double or hit",
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit",
+          9 => "hit", 10 => "hit", 11 => "hit"},
+        10 => {2 => "double or hit", 3 => "double or hit", 4 => "double or hit",
+          5 => "double or hit", 6 => "double or hit", 7 => "double or hit",
+          8 => "double or hit", 9 => "double or hit", 10 => "hit", 11 => "hit"},
+        11 => {2 => "double or hit", 3 => "double or hit", 4 => "double or hit",
+          5 => "double or hit", 6 => "double or hit", 7 => "double or hit",
+          8 => "double or hit", 9 => "double or hit", 10 => "double or hit", 11 => "double or hit"},
+        12 => {2 => "hit", 3 => "hit", 4 => "stand", 5 => "stand", 6 => "stand",
+          7 => "hit", 8 => "hit", 9 => "hit", 10 => "hit", 11 => "hit"},
+        13 => {2 => "stand", 3 => "stand", 4 => "stand", 5 => "stand", 6 => "stand",
+          7 => "hit", 8 => "hit", 9 => "hit", 10 => "hit", 11 => "hit"},
+        14 => {2 => "stand", 3 => "stand", 4 => "stand", 5 => "stand", 6 => "stand",
+          7 => "hit", 8 => "hit", 9 => "hit", 10 => "hit", 11 => "hit"},
+        15 => {2 => "stand", 3 => "stand", 4 => "stand", 5 => "stand", 6 => "stand",
+          7 => "hit", 8 => "hit", 9 => "hit", 10 => "hit", 11 => "hit"},
+        16 => {2 => "stand", 3 => "stand", 4 => "stand", 5 => "stand", 6 => "stand",
+          7 => "hit", 8 => "hit", 9 => "hit", 10 => "hit", 11 => "hit"}}
+
 print "Please enter your first card: "
-card_1 = card_value.to_i
+first_card = card_value.to_i
 print "Please enter your second card: "
-card_2 = card_value.to_i
+second_card = card_value.to_i
 print "Please enter the dealer's card: "
 dealer_card = card_value.to_i
 
-hand_total = card_1 + card_2
-puts check_pair(hand_total, dealer_card, pair)
+hand_total = first_card + second_card
+puts check_hard(hand_total, dealer_card, hard)
 
 #puts check_soft(hand_total, dealer_card, pair)
-# if card_1 = 11 || card_2 || 11
-# bypass_hash(card_1, card_2, hand_total)
+# if first_card = 11 || second_card || 11
+# bypass_hash(first_card, second_card, hand_total)
 # puts hand_total
-# puts card_1, card_2
+# puts first_card, second_card
