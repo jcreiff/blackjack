@@ -25,27 +25,33 @@ def bypass_hash(card_1, card_2, hand_total)
   end
 end
 
+
+def check_soft(hand_total, dealer_card, soft)
+    return soft[hand_total][dealer_card]
+end
+
 soft = {13 => {2 => "hit", 3 => "hit", 4 => "double or hit",
-          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
-          9 => "hit", 10 => "hit", 11 => "hit"}
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit",
+          9 => "hit", 10 => "hit", 11 => "hit"},
         14 => {2 => "hit", 3 => "hit", 4 => "double or hit",
-          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
-          9 => "hit", 10 => "hit", 11 => "hit"}
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit",
+          9 => "hit", 10 => "hit", 11 => "hit"},
         15 => {2 => "hit", 3 => "hit", 4 => "double or hit",
-          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
-          9 => "hit", 10 => "hit", 11 => "hit"}
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit",
+          9 => "hit", 10 => "hit", 11 => "hit"},
         16 => {2 => "hit", 3 => "hit", 4 => "double or hit",
-          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
-          9 => "hit", 10 => "hit", 11 => "hit"}
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit",
+          9 => "hit", 10 => "hit", 11 => "hit"},
         17 => {2 => "double or hit", 3 => "double or hit", 4 => "double or hit",
-          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
-          9 => "hit", 10 => "hit", 11 => "hit"}
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit",
+          9 => "hit", 10 => "hit", 11 => "hit"},
         18 => {2 => "stand", 3 => "double or stand", 4 => "double or stand",
           5 => "double or stand", 6 => "double or stand", 7 => "stand",
-          8 => "stand" 9 => "hit", 10 => "hit", 11 => "stand"}
+          8 => "stand", 9 => "hit", 10 => "hit", 11 => "stand"},
         19 => {2 => "stand", 3 => "stand", 4 => "double or stand",
           5 => "double or stand", 6 => "double or stand", 7 => "stand",
-          8 => "stand" 9 => "hit", 10 => "hit", 11 => "stand"}}
+          8 => "stand", 9 => "hit", 10 => "hit", 11 => "stand"}}
+
 
 print "Please enter your first card: "
 card_1 = card_value.to_i
@@ -55,7 +61,9 @@ print "Please enter the dealer's card: "
 dealer_card = card_value.to_i
 
 hand_total = card_1 + card_2
+puts check_soft(hand_total, dealer_card, soft)
 
-bypass_hash(card_1, card_2, hand_total)
-puts hand_total
-puts card_1, card_2
+# if card_1 = 11 || card_2 || 11
+# bypass_hash(card_1, card_2, hand_total)
+# puts hand_total
+# puts card_1, card_2
