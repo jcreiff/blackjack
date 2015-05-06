@@ -1,18 +1,34 @@
 def card_value
-value = ""
-  until (1..11).include?(value.to_i)
-    value = gets.chomp
-    if (1..10).include?(value.to_i)
-      value.to_i
-    elsif ["k", "q", "j"].include?(value.downcase)
-      value = 10
-    elsif value.downcase == "a"
-      value = 11
-    else
-      print "Not a valid card, please try again: "
+  value = ""
+    until (1..11).include?(value.to_i)
+      value = gets.chomp
+      if (1..10).include?(value.to_i)
+        value.to_i
+      elsif ["k", "q", "j"].include?(value.downcase)
+        value = 10
+      elsif value.downcase == "a"
+        value = 11
+      else
+        print "Not a valid card, please try again: "
+      end
     end
+    return value
+end
+
+def twentyplus(hand_total)
+  if hand_total == 20 || hand_total == 21
+    return "stand"
+  else
+    return "split"
   end
-  return value
+end
+
+def check_soft(hand_total, dealer_card, soft)
+  return soft[hand_total][dealer_card]
+end
+
+def check_pair(hand_total, dealer_card, pair)
+  return pair[hand_total][dealer_card]
 end
 
 def bypass_hash(first_card, second_card, hand_total)
@@ -23,14 +39,6 @@ def bypass_hash(first_card, second_card, hand_total)
   else
     return
   end
-end
-
-def check_soft(hand_total, dealer_card, soft)
-  return soft[hand_total][dealer_card]
-end
-
-def check_pair(hand_total, dealer_card, pair)
-  return pair[hand_total][dealer_card]
 end
 
 def check_hard(hand_total, dealer_card, hard)
@@ -107,9 +115,15 @@ print "Please enter the dealer's card: "
 dealer_card = card_value.to_i
 
 hand_total = first_card + second_card
-puts check_hard(hand_total, dealer_card, hard)
 
-#puts check_soft(hand_total, dealer_card, pair)
+if hand_total > 19
+  move = twentyplus(hand_total)
+end
+puts hand_total
+puts move
+#puts check_hard(hand_total, dealer_card, hard)
+#puts check_pair(hand_total, dealer_card, pair)
+#puts check_soft(hand_total, dealer_card, soft)
 # if first_card = 11 || second_card || 11
 # bypass_hash(first_card, second_card, hand_total)
 # puts hand_total
