@@ -25,6 +25,28 @@ def bypass_hash(card_1, card_2, hand_total)
   end
 end
 
+soft = {13 => {2 => "hit", 3 => "hit", 4 => "double or hit",
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
+          9 => "hit", 10 => "hit", 11 => "hit"}
+        14 => {2 => "hit", 3 => "hit", 4 => "double or hit",
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
+          9 => "hit", 10 => "hit", 11 => "hit"}
+        15 => {2 => "hit", 3 => "hit", 4 => "double or hit",
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
+          9 => "hit", 10 => "hit", 11 => "hit"}
+        16 => {2 => "hit", 3 => "hit", 4 => "double or hit",
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
+          9 => "hit", 10 => "hit", 11 => "hit"}
+        17 => {2 => "double or hit", 3 => "double or hit", 4 => "double or hit",
+          5 => "double or hit", 6 => "double or hit", 7 => "hit", 8 => "hit"
+          9 => "hit", 10 => "hit", 11 => "hit"}
+        18 => {2 => "stand", 3 => "double or stand", 4 => "double or stand",
+          5 => "double or stand", 6 => "double or stand", 7 => "stand",
+          8 => "stand" 9 => "hit", 10 => "hit", 11 => "stand"}
+        19 => {2 => "stand", 3 => "stand", 4 => "double or stand",
+          5 => "double or stand", 6 => "double or stand", 7 => "stand",
+          8 => "stand" 9 => "hit", 10 => "hit", 11 => "stand"}}
+
 print "Please enter your first card: "
 card_1 = card_value.to_i
 print "Please enter your second card: "
