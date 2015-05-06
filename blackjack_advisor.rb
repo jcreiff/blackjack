@@ -31,13 +31,11 @@ def check_pair(hand_total, dealer_card, pair)
   return pair[hand_total][dealer_card]
 end
 
-def bypass_hash(first_card, second_card, hand_total)
-  if hand_total < 8 && first_card != second_card
-    puts "Your optimal move is to hit."
-  elsif hand_total > 16 && first_card != second_card
-    puts "Your optimal move is to stand."
-  else
-    return
+def bypass_hash(hand_total)
+  if hand_total < 8
+    return "hit"
+  elsif hand_total > 16
+    return "stand"
   end
 end
 
@@ -118,13 +116,14 @@ hand_total = first_card + second_card
 
 if hand_total > 19
   move = twentyplus(hand_total)
+elsif first_card == 11 || second_card ==11
+  move = check_soft(hand_total, dealer_card, soft)
+elsif first_card == second_card
+  move = check_pair(hand_total, dealer_card, pair)
+elsif hand_total < 8 || hand_total > 16
+  move = bypass_hash(hand_total)
+else
+  move = check_hard(hand_total, dealer_card, hard)
 end
-puts hand_total
-puts move
-#puts check_hard(hand_total, dealer_card, hard)
-#puts check_pair(hand_total, dealer_card, pair)
-#puts check_soft(hand_total, dealer_card, soft)
-# if first_card = 11 || second_card || 11
-# bypass_hash(first_card, second_card, hand_total)
-# puts hand_total
-# puts first_card, second_card
+
+puts "Your optimal move is #{move}."
