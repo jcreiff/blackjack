@@ -24,3 +24,5 @@ You'll be swimming in cash before you know it.  Here's how:
 
 
 ######**Blackjack Advisor not responsible for losses incurred at the blackjack table...at least not until I revisit this code to knock out nightmare mode*
+
+######**Assignment from Week 1 of The Iron Yard's Ruby on Rails course (Durham)*
